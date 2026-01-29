@@ -3,22 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO-DO List</title>
+    <title>TaskMaster Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    
 </head>
+
 <body>
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         HTML STRUCTURE
+    ════════════════════════════════════════════════════════════════════════════ -->
 
-    <div class="to-do-container">
-        <h1>Ma To-Do List</h1>
+    <div class="app-container">
 
-        <input type="text" id="todo-input" placeholder="Ajouter une tâche">
-        <button onclick="addTodo()">Ajouter</button>
+        <!-- ===== HEADER SECTION ===== -->
+        <header class="header">
+            <h1><i class="fas fa-tasks"></i> GESTACHES </h1>
+            <p class="subtitle">Organisez votre vie, une tâche à la fois</p>
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle" id="themeToggle" title="Changer le thème">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </header>
 
-        <ul id="todo-list"></ul>
+        <!-- ===== WELCOME BANNER ===== -->
+        <div class="welcome-banner" id="welcomeBanner">
+            <div class="welcome-content">
+                <h2><i class="fas fa-hand-sparkles"></i> <span id="greetingText">Bienvenue !</span></h2>
+                <p id="motivationalText">Prêt à accomplir de grandes choses aujourd'hui ?</p>
+            </div>
+        </div>
+
+        <!-- ===== STATS CARDS ===== -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-list-check"></i></div>
+                <div class="number" id="totalTasks">0</div>
+                <div class="label">Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-circle-check"></i></div>
+                <div class="number" id="completedTasks">0</div>
+                <div class="label">Terminées</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-clock"></i></div>
+                <div class="number" id="pendingTasks">0</div>
+                <div class="label">En attente</div>
+            </div>
+        </div>
+
+        <!-- ===== SEARCH BAR ===== -->
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Rechercher une tâche...">
+        </div>
+
+        <!-- ===== ADD TASK FORM ===== -->
+        <div class="add-task-container">
+            <h3><i class="fas fa-plus-circle"></i> Nouvelle Tâche</h3>
+            <div class="form-group">
+                <label for="taskTitle">Titre de la tâche</label>
+                <input type="text" class="input-field" id="taskTitle" placeholder="Que devez-vous faire ?">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="taskPriority">Priorité</label>
+                    <select class="input-field" id="taskPriority">
+                        <option value="low">🟢 Basse</option>
+                        <option value="medium" selected>🟡 Moyenne</option>
+                        <option value="high">🔴 Haute</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Date limite</label>
+                    <input type="date" class="input-field" id="taskDueDate">
+                </div>
+            </div>
+            <button class="btn-add" id="addTaskBtn">
+                <i class="fas fa-plus"></i> Ajouter la tâche
+            </button>
+        </div>
+
+        <!-- ===== FILTER TABS ===== -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">Toutes</button>
+            <button class="filter-tab" data-filter="pending">En attente</button>
+            <button class="filter-tab" data-filter="completed">Terminées</button>
+            <button class="filter-tab" data-filter="high">🔴 Haute</button>
+        </div>
+
+        <!-- ===== TASKS LIST ===== -->
+        <div class="tasks-list" id="tasksList"></div>
+
     </div>
 
-    <script src="script.js"></script>
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ===== DELETE CONFIRMATION MODAL ===== -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <div class="modal-icon warning">
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            <h3>Supprimer cette tâche ?</h3>
+            <p>Cette action est irréversible. Êtes-vous sûr de vouloir continuer ?</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" id="cancelDelete">Annuler</button>
+                <button class="modal-btn confirm" id="confirmDelete">Supprimer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         JAVASCRIPT
+    ════════════════���═══════════════════════════════════════════════════════════ -->
+    <script src="script.js">
+      
+    </script>
 </body>
 </html>
-
- 
